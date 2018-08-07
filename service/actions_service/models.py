@@ -6,3 +6,4 @@ class Event(models.Model):
     date = models.DateTimeField(auto_now_add=True, editable=False)
     contact = models.EmailField(null=False, blank=False, editable=False)
     camera = models.CharField(max_length=100, null=False, blank=False, editable=False)
+    result = models.TextField()

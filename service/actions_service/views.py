@@ -5,6 +5,8 @@ from rest_framework.response import Response
 from actions_service.models import Event
 from actions_service.serializers import EventSerializer
 
+from email_service import send_email
+
 
 def get_contact(camera):
     # TODO: get contact from camera id
@@ -32,8 +34,8 @@ def event(request):
             event_name = request.POST['event']
             camera = request.POST['camera']
             contact = get_contact(camera)
-            # TODO: send email
             e = Event.objects.create(event=event_name, camera=camera, contact=contact)
+            e.result = send_email(contact, event, e.date, camera)
             e.save()
             return Response(status=status.HTTP_200_OK)
         except KeyError as ex:
