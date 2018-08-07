@@ -35,7 +35,7 @@ def event(request):
             camera = request.POST['camera']
             contact = get_contact(camera)
             e = Event.objects.create(event=event_name, camera=camera, contact=contact)
-            e.result = send_email(contact, event, e.date, camera)
+            e.result = send_email(contact, event_name, e.date, camera)
             e.save()
             return Response(status=status.HTTP_200_OK)
         except KeyError as ex:

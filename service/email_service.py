@@ -18,7 +18,7 @@ def send_email(recipient, event, date, camera):
     <head></head>
     <body>
       <h1>Um evento foi detectado</h1>
-      <p>O evento {} foi detectado às {} pela camera {}.</p>
+      <p>O evento '{}' foi detectado às {} pela camera {}.</p>
       <p>MIA</p>
     </body>
     </html>
