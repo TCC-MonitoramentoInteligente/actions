@@ -2,7 +2,7 @@ import boto3
 from botocore.exceptions import ClientError
 
 
-SENDER = "Monitoramento Inteligente de Ambientes <sender@example.com>"
+SENDER = "Monitoramento Inteligente de Ambientes <jhonata.antunes@outlook.com>"
 AWS_REGION = "us-west-2"
 SUBJECT = "Alerta de evento"
 CHARSET = "UTF-8"
