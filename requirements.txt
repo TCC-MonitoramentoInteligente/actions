@@ -2,4 +2,3 @@ django
 djangorestframework
 boto3
 requests
-opencv-python==3.4.0.12

@@ -1,7 +1,5 @@
 import base64
 
-import cv2
-import numpy as np
 import requests
 
 from rest_framework import status
@@ -38,9 +36,7 @@ def event(request):
             camera = request.POST['camera']
             contact = get_contact(camera)
             event_print = requests.get(url=event_print_url, params={'cam_id': camera})
-            frame = event_print.text
-            frame = cv2.imdecode(np.fromstring(frame, dtype=np.uint8), cv2.IMREAD_COLOR)
-            frame64 = base64.b64encode(frame)
+            frame64 = event_print.text
             e = Event.objects.create(event=event_name, camera=camera, contact=contact)
             e.result = send_email(contact, event_name, e.date, camera, frame64)
             e.save()
