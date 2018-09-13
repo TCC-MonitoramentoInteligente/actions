@@ -25,7 +25,7 @@ data = 'From: {}\n' \
        'Content-Type: text/html\n\n' \
        '{} \n\n' \
        '--NextPart\n' \
-       'Content-Type: image/jpeg; name="photo.jpeg";\n' \
+       'Content-Type: image/jpeg; name="event.jpeg";\n' \
        'Content-Disposition: attachment;\n' \
        'Content-Transfer-Encoding: base64;\n' \
        'filename="event.jpeg"\n\n' \
