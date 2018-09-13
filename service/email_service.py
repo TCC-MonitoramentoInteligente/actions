@@ -8,7 +8,7 @@ SUBJECT = "Alerta de evento"
 CHARSET = "UTF-8"
 
 
-def send_email(recipient, event, date, camera):
+def send_email(recipient, event, date, camera, frame64):
     body_text = "Um evento foi detectado\r\n" \
                 "O evento {} foi detectado às {} pela camera {}.\r\n" \
                 "MIA.".format(event, date, camera)
@@ -19,10 +19,11 @@ def send_email(recipient, event, date, camera):
     <body>
       <h1>Um evento foi detectado</h1>
       <p>O evento '{}' foi detectado às {} pela camera {}.</p>
+      <img src="data:image/png;base64,{}" />
       <p>MIA</p>
     </body>
     </html>
-                """.format(event, date, camera)
+                """.format(event, date, camera, frame64)
 
     client = boto3.client('ses', region_name=AWS_REGION)
     try:

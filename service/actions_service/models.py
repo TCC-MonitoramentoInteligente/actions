@@ -1,5 +1,8 @@
 from django.db import models
 
+GPU_SERVER_IP = '10.242.128.252'
+event_print_url = 'http://{}:8000/object-detection/print/'.format(GPU_SERVER_IP)
+
 
 class Event(models.Model):
     event = models.CharField(max_length=50, null=False, blank=False, editable=False)
