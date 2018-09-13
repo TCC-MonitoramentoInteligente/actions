@@ -2,6 +2,7 @@ import base64
 
 import cv2
 import numpy as np
+import requests
 
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -36,7 +37,7 @@ def event(request):
             event_name = request.POST['event']
             camera = request.POST['camera']
             contact = get_contact(camera)
-            event_print = request.get(url=event_print_url, params={'cam_id': camera})
+            event_print = requests.get(url=event_print_url, params={'cam_id': camera})
             frame = event_print.text
             frame = cv2.imdecode(np.fromstring(frame, dtype=np.uint8), cv2.IMREAD_COLOR)
             frame64 = base64.b64encode(frame)
