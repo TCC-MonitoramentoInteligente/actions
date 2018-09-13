@@ -25,11 +25,12 @@ def send_email(recipient, event, date, camera, frame64):
            'MIME-Version: 1.0\n' \
            'Content-type: Multipart/Mixed; boundary="NextPart"\n\n' \
            '--NextPart\n' \
-           'Content-Type: text/plain\n\n' \
+           'Content-Type: text/html\n\n' \
            '{}\n\n' \
            '--NextPart\n' \
-           'Content-Type:  image/jpeg; name="photo.jpeg;\n' \
-           'Content-Disposition: attachment; ' \
+           'Content-Type: image/jpeg; name="photo.jpeg";\n' \
+           'Content-Disposition: attachment;\n' \
+           'Content-Transfer-Encoding: base64;\n' \
            'filename="event.jpeg"\n\n' \
            '{}\n\n' \
            '--NextPart--'.format(SENDER, recipient, SUBJECT, body_html, frame64)
