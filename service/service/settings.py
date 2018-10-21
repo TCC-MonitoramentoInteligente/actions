@@ -25,8 +25,8 @@ SECRET_KEY = 'z=l9aea**22@=xha^^!4t_mzzyu1i5h+g3)fhb3w%j&9zg#8*a'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-GPU_SERVER_IP = '10.242.128.252'
-ACTIONS_SERVICE_IP = '10.242.103.152'
+GPU_SERVER_IP = '10.1.0.2'
+ACTIONS_SERVICE_IP = '10.1.0.3'
 
 ALLOWED_HOSTS = [
     ACTIONS_SERVICE_IP,

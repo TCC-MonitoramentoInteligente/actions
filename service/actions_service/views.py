@@ -1,6 +1,5 @@
-import base64
-
 import requests
+from django.http import HttpResponse
 
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -43,3 +42,5 @@ def event(request):
             return Response(status=status.HTTP_200_OK)
         except KeyError as ex:
             Response(ex, status=status.HTTP_400_BAD_REQUEST)
+    else:
+        return HttpResponse("Method not allowed", status=405)
