@@ -13,10 +13,7 @@ from email_service import send_email
 
 def get_contact(camera):
     # TODO: get contact from camera id
-    if camera == '-1':
-        return 'jhonata.antunes@outlook.com'
-    else:
-        return 'adilson.torres@outlook.com'
+    return 'jhonata.antunes@outlook.com'
 
 
 @api_view(['GET', 'POST'])
