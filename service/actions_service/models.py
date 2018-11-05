@@ -2,7 +2,8 @@ from django.db import models
 
 from service import settings
 
-event_print_url = 'http://{}:8000/object-detection/print/'.format(settings.GPU_SERVER_IP)
+event_print_url = 'http://{}:{}/object-detection/print/'\
+    .format(settings.OBJECT_DETECTION_SERVICE_IP, settings.OBJECT_DETECTION_SERVICE_PORT)
 
 
 class Event(models.Model):
