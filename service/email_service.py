@@ -1,7 +1,7 @@
 import boto3
 from botocore.exceptions import ClientError
 
-SENDER = "jhonata.antunes@outlook.com"
+SENDER = "eventos.mia@outlook.com"
 AWS_REGION = "us-west-2"
 SUBJECT = "Alerta de evento"
 CHARSET = "UTF-8"

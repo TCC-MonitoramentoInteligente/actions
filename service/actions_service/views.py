@@ -13,7 +13,7 @@ from email_service import send_email
 
 def get_contact(camera):
     # TODO: get contact from camera id
-    return 'jhonata.antunes@outlook.com'
+    return 'eventos.mia@outlook.com'
 
 
 @api_view(['GET', 'POST'])
