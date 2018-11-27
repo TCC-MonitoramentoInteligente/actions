@@ -1,3 +1,5 @@
+import datetime
+
 import boto3
 from botocore.exceptions import ClientError
 
@@ -7,17 +9,38 @@ SUBJECT = "Alerta de evento"
 CHARSET = "UTF-8"
 
 
-def send_email(recipient, event, date, camera, frame64):
+def send_email(recipient, event, cam_id, cam_name, cam_address, frame64):
     body_html = """
     <html>
     <head></head>
     <body>
       <h1>Um evento foi detectado</h1>
-      <p>O evento '{}' foi detectado às {} pela camera {}.</p>
+      <p>O evento '{}' foi detectado em {}.</p>
+      <table>
+          <tr>
+            <th colspan="2">Camera</th>
+          </tr>
+          <tr>
+            <td>Identificação</td>
+            <td>{}</td>
+          </tr>
+          <tr>
+            <td>Nome</td>
+            <td>{}</td>
+          </tr>
+          <tr>
+            <td>Endereço</td>
+            <td>{}</td>
+          </tr>
+    </table>
       <p>MIA</p>
     </body>
     </html>
-                """.format(event, date, camera)
+                """.format(event,
+                           datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S'),
+                           cam_id,
+                           cam_name,
+                           cam_address)
 
     data = 'From: {}\n' \
            'To: {}\n' \
