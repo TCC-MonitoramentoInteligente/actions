@@ -34,7 +34,7 @@ def event(request):
             event_name = request.POST['event']
             cam_id = request.POST['cam_id']
             contact = get_contact()
-            event_print = requests.get(url=event_print_url, params={'cam_id': cam_id}, timeout=4)
+            event_print = requests.get(url=event_print_url, params={'cam_id': cam_id}, timeout=5)
             frame64 = event_print.text
             cam = requests.get(url=camera_url + '{}/'.format(cam_id), timeout=4).json()
             e = Event.objects.create(event=event_name, camera=cam_id, contact=contact)
@@ -45,8 +45,10 @@ def event(request):
                                 payload=success.format(cam_id))
             return Response(status=status.HTTP_200_OK)
         except KeyError as ex:
+            print(ex)
             Response(ex, status=status.HTTP_400_BAD_REQUEST)
         except (requests.exceptions.ConnectTimeout, requests.exceptions.ConnectionError) as ex:
+            print(ex)
             mqtt_client.publish(topic="actions/logs/success",
                                 payload=external_service_not_responding)
             Response(ex, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
